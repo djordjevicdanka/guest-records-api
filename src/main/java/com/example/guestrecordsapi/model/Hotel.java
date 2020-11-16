@@ -29,7 +29,8 @@ public class Hotel {
     private String email;
 
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
     private List<Guest> guests = new ArrayList<>();
 
     public Hotel(){

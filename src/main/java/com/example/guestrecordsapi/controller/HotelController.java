@@ -1,6 +1,8 @@
 package com.example.guestrecordsapi.controller;
 
+import com.example.guestrecordsapi.dto.Response;
 import com.example.guestrecordsapi.model.Hotel;
+import com.example.guestrecordsapi.repository.HotelRepository;
 import com.example.guestrecordsapi.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,12 @@ public class HotelController {
     @Autowired
     private HotelService hotelService;
 
+    @Autowired
+    private HotelRepository hotelRepository;
+
     //GET
     @ResponseBody
-    @RequestMapping(value = "/hotels", method= RequestMethod.GET)
+    @RequestMapping(value = "/hotels/GET", method= RequestMethod.GET)
     public List<Hotel> getHotels(){
         return hotelService.getAllHotels();
     }
@@ -24,24 +29,30 @@ public class HotelController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/hotels/{hotel_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/hotels/{hotel_id}/GET", method = RequestMethod.GET)
     public Hotel getHotelByHotelId(@PathVariable int hotel_id){
         return hotelService.getHotel(hotel_id);
     }
 
     //POST -> Save the data
     @ResponseBody
-    @RequestMapping(value = "/hotels/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/hotels/POST", method = RequestMethod.POST)
     public void saveHotel(@RequestBody Hotel hotel){
         hotelService.saveHotel(hotel);
     }
 
     //PUT -> Update the data
     @ResponseBody
-    @RequestMapping(value = "/hotels/update", method = RequestMethod.PUT)
+    @RequestMapping(value = "/hotels/PUT", method = RequestMethod.PUT)
     public void  updateHotel(@RequestBody Hotel hotel){
         hotelService.updateHotel(hotel);
     }
+
+    @GetMapping("/getInfo")
+    public List<Response> findAllHotels(){
+        return hotelRepository.findAllHotels();
+    }
+
 
     //DELETE -> Delete the data
 
