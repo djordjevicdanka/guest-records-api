@@ -1,20 +1,20 @@
 package com.example.guestrecordsapi.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.ArrayList;
+
+import java.io.Serializable;
 import java.util.List;
 
+
 @Entity
-@Table(name = "HOTEL")
-public class Hotel {
+@Table(name = "Hotel")
+public class Hotel  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "hotel_id")
-    private Integer hotelId;
+    private Integer hotel_id;
 
     @Column(name = "name")
     private String name;
@@ -29,20 +29,20 @@ public class Hotel {
     private String email;
 
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public List<Guest> guests;
 
-    private List<Guest> guests = new ArrayList<>();
 
     public Hotel(){
 
     }
 
-    public Integer getHotelId() {
-        return hotelId;
+    public Integer getHotel_id() {
+        return hotel_id;
     }
 
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel_id(Integer hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     public String getName() {
@@ -69,7 +69,7 @@ public class Hotel {
         this.address = address;
     }
 
-    public String getMail() {
+    public String getEmail() {
         return email;
     }
 

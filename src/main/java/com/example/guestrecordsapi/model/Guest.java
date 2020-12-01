@@ -1,18 +1,28 @@
 package com.example.guestrecordsapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
-@Table(name = "GUEST")
-public class Guest {
+@IdClass(Guest.class)
+@Table(name = "Guest")
+public class Guest implements Serializable {
 
+    @JsonManagedReference
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "guest_id")
-    private Integer guestId;
+    private Integer guest_id;
 
     @Column(name = "name")
     private String name;
@@ -24,20 +34,19 @@ public class Guest {
     private String phone;
 
 
-    @ManyToOne
+    @Id
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    Hotel hotel;
 
-    public Guest(){
 
+
+    public Integer getGuest_id() {
+        return guest_id;
     }
 
-    public Integer getGuestId() {
-        return guestId;
-    }
-
-    public void setGuestId(Integer guestId) {
-        this.guestId = guestId;
+    public void setGuestId(Integer guest_id) {
+        this.guest_id = guest_id;
     }
 
     public String getName() {

@@ -48,9 +48,10 @@ public class HotelController {
         hotelService.updateHotel(hotel);
     }
 
-    @GetMapping("/getInfo")
-    public List<Response> findAllHotels(){
-        return hotelRepository.findAllHotels();
+    @ResponseBody
+    @RequestMapping(value = "/hotels/info/GET", method = RequestMethod.GET)
+     List<Response> getJoinInformation(){
+        return hotelRepository.getJoinInformation();
     }
 
 

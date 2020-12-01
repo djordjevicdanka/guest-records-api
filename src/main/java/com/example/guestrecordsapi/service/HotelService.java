@@ -19,7 +19,7 @@ public class HotelService{
     private List <Hotel> list= new ArrayList<>();
 
 
-    //Return AllPHotels
+    //Return AllHotels
     public List<Hotel> getAllHotels() {
         List<Hotel> hotelList = new ArrayList<>();
         hotelRepository.findAll().forEach(hotelList::add);

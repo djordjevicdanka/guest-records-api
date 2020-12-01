@@ -16,6 +16,12 @@ import javax.persistence.Id;
 public class Response {
 
     @Id
+    private int hotel_id;
     private String name;
-    private String mail;
+    private String email;
+    private int guest_id;
+    private String guest_name;
+    private String surname;
+    private String phone;
+
 }
