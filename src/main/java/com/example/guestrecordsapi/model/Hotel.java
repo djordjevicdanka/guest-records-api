@@ -2,10 +2,8 @@ package com.example.guestrecordsapi.model;
 
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.util.List;
-
 
 @Entity
 @Table(name = "Hotel")
@@ -13,8 +11,8 @@ public class Hotel  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "hotel_id")
-    private Integer hotel_id;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -29,20 +27,19 @@ public class Hotel  implements Serializable {
     private String email;
 
 
+
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public List<Guest> guests;
+    public List<Reservation> reservations;
 
 
-    public Hotel(){
+    public Hotel(){}
 
+    public Integer id() {
+        return id;
     }
 
-    public Integer getHotel_id() {
-        return hotel_id;
-    }
-
-    public void setHotel_id(Integer hotel_id) {
-        this.hotel_id = hotel_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -77,11 +74,11 @@ public class Hotel  implements Serializable {
         this.email = email;
     }
 
-    public List<Guest> getGuests() {
-        return guests;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setGuests(List<Guest> guests) {
-        this.guests = guests;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

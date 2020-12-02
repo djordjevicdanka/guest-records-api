@@ -1,10 +1,9 @@
-package com.example.guestrecordsapi.service;
 
+package com.example.guestrecordsapi.service;
 import com.example.guestrecordsapi.model.Guest;
 import com.example.guestrecordsapi.repository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +17,7 @@ public class GuestService{
     private List<Guest> list= new ArrayList<>();
 
 
-    //Return AllPGuests
+    //Return AllGuests
     public List<Guest> getAllGuests() {
         List<Guest> guestList = new ArrayList<>();
         guestRepository.findAll().forEach(guestList::add);
@@ -49,3 +48,5 @@ public class GuestService{
         guestRepository.deleteById(guest_id);
     }
 }
+
+

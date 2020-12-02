@@ -1,5 +1,4 @@
 package com.example.guestrecordsapi.controller;
-
 import com.example.guestrecordsapi.dto.Response;
 import com.example.guestrecordsapi.model.Hotel;
 import com.example.guestrecordsapi.repository.HotelRepository;
@@ -7,7 +6,6 @@ import com.example.guestrecordsapi.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -29,9 +27,9 @@ public class HotelController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/hotels/{hotel_id}/GET", method = RequestMethod.GET)
-    public Hotel getHotelByHotelId(@PathVariable int hotel_id){
-        return hotelService.getHotel(hotel_id);
+    @RequestMapping(value = "/hotels/{id}/GET", method = RequestMethod.GET)
+    public Hotel getHotelByHotelId(@PathVariable int id){
+        return hotelService.getHotel(id);
     }
 
     //POST -> Save the data
@@ -57,8 +55,8 @@ public class HotelController {
 
     //DELETE -> Delete the data
 
-    public void deleteHotel(int hotel_id){
-        hotelService.deleteHotel(hotel_id);
+    public void deleteHotel(int id){
+        hotelService.deleteHotel(id);
     }
 
 

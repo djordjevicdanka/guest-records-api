@@ -1,11 +1,8 @@
 package com.example.guestrecordsapi.service;
-
 import com.example.guestrecordsapi.model.Hotel;
 import com.example.guestrecordsapi.repository.HotelRepository;
-import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +24,8 @@ public class HotelService{
     }
 
     //Return Single Hotel
-    public Hotel getHotel(int hotel_id){
-        Optional<Hotel> optionalHotel = hotelRepository.findById(hotel_id);
+    public Hotel getHotel(int id){
+        Optional<Hotel> optionalHotel = hotelRepository.findById(id);
         if(optionalHotel.isPresent()){
             return optionalHotel.get();
         }
@@ -46,8 +43,8 @@ public class HotelService{
     }
 
     //Remove the hotel
-    public void deleteHotel(int hotel_id){
-        hotelRepository.deleteById(hotel_id);
+    public void deleteHotel(int id){
+        hotelRepository.deleteById(id);
     }
 
 

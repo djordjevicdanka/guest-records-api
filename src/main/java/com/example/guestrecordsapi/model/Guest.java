@@ -1,26 +1,27 @@
+
 package com.example.guestrecordsapi.model;
-
-
+import com.example.guestrecordsapi.model.Reservation;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@IdClass(Guest.class)
 @Table(name = "Guest")
-public class Guest implements Serializable {
+public class Guest {
 
     @JsonManagedReference
-    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     @Column(name = "guest_id")
     private Integer guest_id;
 
@@ -33,19 +34,16 @@ public class Guest implements Serializable {
     @Column(name = "phone")
     private String phone;
 
-
-    @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotel_id")
-    Hotel hotel;
+    @JsonBackReference
+    @OneToMany(mappedBy = "guest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 
 
-
-    public Integer getGuest_id() {
+    public int  getGuest_id() {
         return guest_id;
     }
 
-    public void setGuestId(Integer guest_id) {
+    public void setGuest_id(int guest_id) {
         this.guest_id = guest_id;
     }
 

@@ -1,17 +1,22 @@
-package com.example.guestrecordsapi.repository;
 
+package com.example.guestrecordsapi.repository;
+import com.example.guestrecordsapi.dto.GuestResponse;
 import com.example.guestrecordsapi.dto.Response;
 import com.example.guestrecordsapi.model.Guest;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface GuestRepository extends JpaRepository<Guest, Integer> {
 
+@Repository
+public interface GuestRepository extends JpaRepository<Guest, Integer > {
+
+    @Query("SELECT new com.example.guestrecordsapi.dto.GuestResponse(g.name, g.surname, r.date) FROM Reservation r JOIN r.guest g")
+    List<GuestResponse> getJoinInformation();
 
 }
+
+
 

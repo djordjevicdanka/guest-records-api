@@ -1,9 +1,10 @@
-package com.example.guestrecordsapi.controller;
 
+package com.example.guestrecordsapi.controller;
+import com.example.guestrecordsapi.dto.GuestResponse;
+import com.example.guestrecordsapi.dto.Response;
 import com.example.guestrecordsapi.model.Guest;
-import com.example.guestrecordsapi.model.Hotel;
+import com.example.guestrecordsapi.repository.GuestRepository;
 import com.example.guestrecordsapi.service.GuestService;
-import com.example.guestrecordsapi.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class GuestController {
 
     @Autowired
     private GuestService guestService;
+
+    @Autowired
+    private GuestRepository guestRepository;
 
     //GET
     @ResponseBody
@@ -43,9 +47,16 @@ public class GuestController {
         guestService.updateGuest(guest);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/guests/info/GET", method = RequestMethod.GET)
+    List<GuestResponse> getJoinInformation(){
+        return guestRepository.getJoinInformation();
+    }
+
     //DELETE -> Delete the data
-    public void deleteGuest(int guest_id){
+    public void deleteGuest(int guest_id ){
         guestService.deleteGuest(guest_id);
     }
 
 }
+
