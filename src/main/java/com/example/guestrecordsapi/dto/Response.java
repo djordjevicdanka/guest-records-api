@@ -14,9 +14,14 @@ import javax.persistence.Id;
 public class Response {
 
     @Id
-    private int idHotela;
-    private String nameHotela;
-    private String dateReservation;
-    private String phoneGuest;
+    private int hotelId;
+    private String hotelName;
+    private String hotelPhone;
+    private String hotelAddress;
+    private String hotelEmail;
+    private String guestName;
+    private String guestSurname;
+    private String guestPhone;
+    private String guestReservation;
 
 }

@@ -1,4 +1,5 @@
 package com.example.guestrecordsapi.controller;
+
 import com.example.guestrecordsapi.dto.Response;
 import com.example.guestrecordsapi.model.Hotel;
 import com.example.guestrecordsapi.repository.HotelRepository;

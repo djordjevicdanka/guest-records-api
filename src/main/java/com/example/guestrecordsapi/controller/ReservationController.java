@@ -1,12 +1,7 @@
 
 package com.example.guestrecordsapi.controller;
-import com.example.guestrecordsapi.dto.GuestResponse;
-import com.example.guestrecordsapi.dto.Response;
-import com.example.guestrecordsapi.model.Guest;
 import com.example.guestrecordsapi.model.Reservation;
-import com.example.guestrecordsapi.repository.GuestRepository;
 import com.example.guestrecordsapi.repository.ReservationRepository;
-import com.example.guestrecordsapi.service.GuestService;
 import com.example.guestrecordsapi.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

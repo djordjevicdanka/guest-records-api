@@ -1,7 +1,6 @@
 
 package com.example.guestrecordsapi.controller;
 import com.example.guestrecordsapi.dto.GuestResponse;
-import com.example.guestrecordsapi.dto.Response;
 import com.example.guestrecordsapi.model.Guest;
 import com.example.guestrecordsapi.repository.GuestRepository;
 import com.example.guestrecordsapi.service.GuestService;
@@ -52,6 +51,7 @@ public class GuestController {
     List<GuestResponse> getJoinInformation(){
         return guestRepository.getJoinInformation();
     }
+
 
     //DELETE -> Delete the data
     public void deleteGuest(int guest_id ){
